@@ -48,6 +48,7 @@ class FormC extends React.Component {
                 type="text"
                 id="nameId"
                 name="name"
+                value={this.state.name}
                 onChange={this.changeHandler}
               />
             </p>
@@ -57,6 +58,7 @@ class FormC extends React.Component {
                 type="text"
                 id="deptId"
                 name="department"
+                value={this.state.department}
                 onChange={this.changeHandler}
               />
             </p>
@@ -66,6 +68,7 @@ class FormC extends React.Component {
                 type="number"
                 id="ratingId"
                 name="rating"
+                value={this.state.rating}
                 onChange={this.changeHandler}
               />
             </p>
