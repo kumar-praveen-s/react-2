@@ -1,5 +1,4 @@
 import React from "react";
-import Fvalue from "./fvalue";
 
 class FormC extends React.Component {
   constructor() {
@@ -9,7 +8,6 @@ class FormC extends React.Component {
       department: "",
       rating: "",
       employee: [],
-      status: false,
     };
   }
 
@@ -29,11 +27,13 @@ class FormC extends React.Component {
       depart: department,
       rate: rating,
     };
-    this.state.employee.push(obj);
-    console.log(this.state);
+    const Arr = this.state.employee;
+    Arr.push(obj);
     this.setState({
-      status: true,
+      employee: Arr,
     });
+    console.log(this.state);
+    console.log(this.state.employee.length);
   };
 
   render() {
@@ -50,6 +50,7 @@ class FormC extends React.Component {
                 name="name"
                 value={this.state.name}
                 onChange={this.changeHandler}
+                required
               />
             </p>
             <p className="para-style">
@@ -60,6 +61,7 @@ class FormC extends React.Component {
                 name="department"
                 value={this.state.department}
                 onChange={this.changeHandler}
+                required
               />
             </p>
             <p className="para-style">
@@ -70,6 +72,7 @@ class FormC extends React.Component {
                 name="rating"
                 value={this.state.rating}
                 onChange={this.changeHandler}
+                required
               />
             </p>
             <p className="para-style">
@@ -83,10 +86,23 @@ class FormC extends React.Component {
             </p>
           </form>
         </div>
-        {this.state.status && <Fvalue employee={this.state.employee} />}
+        {this.state.employee.length > 0 && (
+          <Fvalue employee={this.state.employee} />
+        )}
       </>
     );
   }
 }
+
+const Fvalue = (props) => {
+  const dc = props.employee.map((item, pos) => {
+    return (
+      <div className="form-value-box" key={pos}>
+        <h1 className="h1-style">{`Name : ${item.n} | Department : ${item.depart} | Rating : ${item.rate}`}</h1>
+      </div>
+    );
+  });
+  return <div className="form-value-container">{dc}</div>;
+};
 
 export default FormC;
