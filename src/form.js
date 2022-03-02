@@ -15,25 +15,25 @@ class FormC extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(this);
+    // console.log(this);
   };
 
   handleClick = (e) => {
     e.preventDefault();
     const { name, department, rating } = this.state;
-    console.log(name, department, rating);
+    // console.log(name, department, rating);
     const obj = {
-      n: name,
-      depart: department,
-      rate: rating,
+      name: name,
+      department: department,
+      rating: rating,
     };
     const Arr = this.state.employee;
     Arr.push(obj);
     this.setState({
       employee: Arr,
     });
-    console.log(this.state);
-    console.log(this.state.employee.length);
+    // console.log(this.state);
+    // console.log(this.state.employee.length);
   };
 
   render() {
@@ -98,7 +98,7 @@ const Fvalue = (props) => {
   const dc = props.employee.map((item, pos) => {
     return (
       <div className="form-value-box" key={pos}>
-        <h1 className="h1-style">{`Name : ${item.n} | Department : ${item.depart} | Rating : ${item.rate}`}</h1>
+        <h1 className="h1-style">{`Name : ${item.name} | Department : ${item.department} | Rating : ${item.rating}`}</h1>
       </div>
     );
   });

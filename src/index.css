@@ -61,6 +61,7 @@ input {
   gap: 40px;
   background-color: cadetblue;
   border-radius: 20px;
+  padding: 10px;
 }
 
 .form-value-box {
